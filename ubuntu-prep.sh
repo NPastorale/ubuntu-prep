@@ -83,6 +83,7 @@ sudo usermod -aG docker $USER
 kubectl completion bash | sudo tee /etc/bash_completion.d/kubectl >/dev/null
 gh completion -s bash | sudo tee /etc/bash_completion.d/gh >/dev/null
 kind completion bash | sudo tee /etc/bash_completion.d/kind >/dev/null
+terraform -install-autocomplete
 
 ###########################################################################
 # Cleanup
