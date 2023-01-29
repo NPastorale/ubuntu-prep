@@ -69,7 +69,7 @@ sudo mv ./kind /usr/local/bin/kind
 # Apt installations
 ###########################################################################
 sudo apt update
-sudo apt install -y ./chrome.deb ./vscode.deb syncthing docker-ce docker-ce-cli containerd.io docker-compose-plugin kubectl gh
+sudo apt install -y ./chrome.deb ./vscode.deb syncthing docker-ce docker-ce-cli containerd.io docker-compose-plugin kubectl gh terraform
 
 ###########################################################################
 # Docker final steps
