@@ -45,6 +45,14 @@ curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo 
         sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg &&
         echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null
 
+curl -s https://api.github.com/repos/kubernetes-sigs/kind/releases/latest |
+        grep "kind-linux-amd64" |
+        head -2 | cut -d : -f 2,3 |
+        tr -d \" |
+        wget -qi - -O kind
+chmod +x ./kind
+sudo mv ./kind /usr/local/bin/kind
+
 sudo apt update
 sudo apt install -y ./chrome.deb ./vscode.deb syncthing docker-ce docker-ce-cli containerd.io docker-compose-plugin kubectl gh
 
@@ -54,3 +62,5 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 
 kubectl completion bash | sudo tee /etc/bash_completion.d/kubectl >/dev/null
+gh completion -s bash | sudo tee /etc/bash_completion.d/gh >/dev/null
+kind completion bash | sudo tee /etc/bash_completion.d/kind >/dev/null
