@@ -31,9 +31,10 @@ sudo apt install -y \
 ###########################################################################
 # Download deb packages
 ###########################################################################
-curl -L "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb" --output chrome.deb
-curl -L "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" --output vscode.deb
-curl -L "https://vault.bitwarden.com/download/?app=desktop&platform=linux&variant=deb" --output bitwarden.deb
+curl -L "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb" --output /tmp/chrome.deb
+curl -L "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" --output /tmp/vscode.deb
+curl -L "https://vault.bitwarden.com/download/?app=desktop&platform=linux&variant=deb" --output /tmp/bitwarden.deb
+curl -L "https://cdn.akamai.steamstatic.com/client/installer/steam.deb" --output /tmp/steam.deb
 
 ###########################################################################
 # Add gpg keys
@@ -70,7 +71,19 @@ sudo mv ./kind /usr/local/bin/kind
 # Apt installations
 ###########################################################################
 sudo apt update
-sudo apt install -y ./chrome.deb ./vscode.deb ./bitwarden.deb syncthing docker-ce docker-ce-cli containerd.io docker-compose-plugin kubectl gh terraform
+sudo apt install -y \
+        /tmp/chrome.deb \
+        /tmp/vscode.deb \
+        /tmp/bitwarden.deb \
+        /tmp/steam.deb \
+        syncthing \
+        docker-ce \
+        docker-ce-cli \
+        containerd.io \
+        docker-compose-plugin \
+        kubectl \
+        gh \
+        terraform
 
 ###########################################################################
 # Docker final steps
@@ -89,5 +102,5 @@ terraform -install-autocomplete
 ###########################################################################
 # Cleanup
 ###########################################################################
-rm ./chrome.deb ./vscode.deb
+rm /tmp/*.deb
 sudo apt autoremove --purge -y
