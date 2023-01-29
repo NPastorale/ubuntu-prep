@@ -33,6 +33,7 @@ sudo apt install -y \
 ###########################################################################
 curl -L "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb" --output chrome.deb
 curl -L "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" --output vscode.deb
+curl -L "https://vault.bitwarden.com/download/?app=desktop&platform=linux&variant=deb" --output bitwarden.deb
 
 ###########################################################################
 # Add gpg keys
@@ -69,7 +70,7 @@ sudo mv ./kind /usr/local/bin/kind
 # Apt installations
 ###########################################################################
 sudo apt update
-sudo apt install -y ./chrome.deb ./vscode.deb syncthing docker-ce docker-ce-cli containerd.io docker-compose-plugin kubectl gh terraform
+sudo apt install -y ./chrome.deb ./vscode.deb ./bitwarden.deb syncthing docker-ce docker-ce-cli containerd.io docker-compose-plugin kubectl gh terraform
 
 ###########################################################################
 # Docker final steps
