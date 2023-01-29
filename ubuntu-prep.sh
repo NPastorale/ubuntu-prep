@@ -10,14 +10,15 @@ fi
 ###########################################################################
 # Enable passwordless sudo
 ###########################################################################
-cat <<EOF >/etc/sudoers.d/nahue
-nahue ALL=(ALL) NOPASSWD:ALL
+cat <<EOF >/etc/sudoers.d/$USER
+$USER ALL=(ALL) NOPASSWD:ALL
 EOF
 
 ###########################################################################
 # Install dependenies
 ###########################################################################
 sudo apt update
+sudo apt full-upgrade -y
 sudo apt install -y \
         curl \
         git \
@@ -89,3 +90,4 @@ terraform -install-autocomplete
 # Cleanup
 ###########################################################################
 rm ./chrome.deb ./vscode.deb
+sudo apt autoremove --purge -y
