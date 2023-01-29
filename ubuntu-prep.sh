@@ -10,8 +10,8 @@ fi
 ###########################################################################
 # Enable passwordless sudo
 ###########################################################################
-cat <<EOF >/etc/sudoers.d/$USER
-$USER ALL=(ALL) NOPASSWD:ALL
+cat <<EOF >/etc/sudoers.d/$SUDO_USER
+$SUDO_USER ALL=(ALL) NOPASSWD:ALL
 EOF
 
 ###########################################################################
@@ -75,7 +75,7 @@ sudo apt install -y ./chrome.deb ./vscode.deb syncthing docker-ce docker-ce-cli 
 # Docker final steps
 ###########################################################################
 sudo groupadd docker
-sudo usermod -aG docker $USER
+sudo usermod -aG docker $SUDO_USER
 
 ###########################################################################
 # Autocompletion
