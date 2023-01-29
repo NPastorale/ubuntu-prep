@@ -32,7 +32,6 @@ sudo apt install -y \
 # Download deb packages
 ###########################################################################
 curl -L "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb" --output chrome.deb
-
 curl -L "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" --output vscode.deb
 
 ###########################################################################
